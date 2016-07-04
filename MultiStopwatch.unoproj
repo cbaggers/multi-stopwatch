@@ -1,0 +1,11 @@
+{
+  "Packages": [
+    "Fuse",
+    "FuseJS"
+  ],
+  "Includes": [
+    "MainView.ux:UXFile",
+    "WatchFace.ux:UXFile",
+    "Roboto-Light.ttf:File"
+  ]
+}

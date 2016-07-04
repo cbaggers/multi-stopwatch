@@ -1,0 +1,39 @@
+<ToggleControl ux:Class="WatchFace">
+	<!-- snippet-begin:WatchFaceCircles -->
+	<Circle Width="10" Height="10" Fill="#fff">
+		<Rotation ux:Name="trackerBall" Degrees="0" />
+		<Translation Y="-0.487" RelativeTo="ParentSize" />
+	</Circle>
+	<Circle ux:Name="clock" StartAngleDegrees="0" EndAngleDegrees="0">
+		<Rotation Degrees="-90" />
+		<Stroke Width="6" Alignment="Inside" Offset="-1" LineCap="Round">
+			<ImageFill File="gradient.png" />
+		</Stroke>
+	</Circle>
+	<Circle>
+		<Stroke Width="6" Alignment="Inside" Offset="-1" Brush="#455493" />
+	</Circle>
+	<Circle ux:Name="tickCircle" Visibility="Hidden">
+		<Stroke Width="6" Alignment="Inside" Offset="-1">
+			<ImageFill File="gradient.png" />
+		</Stroke>
+		<Scaling ux:Name="circleScale" />
+	</Circle>
+	<!-- snippet-end -->
+
+    <WhileTrue>
+        <Cycle Target="clock.EndAngleDegrees" Low="0" High="360" Frequency="1"
+               Waveform="Sawtooth"/>
+        <Cycle Target="trackerBall.Degrees" Low="0" High="360" Frequency="1"
+               Waveform="Sawtooth"/>
+    </WhileTrue>
+
+
+	<!-- snippet-begin:WatchFaceAnimation -->
+	<Timeline ux:Name="tickCircleAnimation">
+		<Change Target="tickCircle.Visibility" Value="Visible" />
+		<Change Target="tickCircle.Opacity" Value="0" Duration="0.5" Easing="QuadraticOut" DurationBack="0" />
+		<Change Target="circleScale.Factor" Value="1.3" Duration="0.5" Easing="QuadraticOut" DurationBack="0" />
+	</Timeline>
+	<!-- snippet-end -->
+</ToggleControl>
